@@ -25,11 +25,29 @@ const images = [
   }
 ];
 
+//      Option 1
+
+const greateGalleryCard = image => {
+  return ` <li><img src = '${image.url}' alt = '${image.alt}'></li>`
+}
+const galleryCardTemplate = images.map(image => greateGalleryCard(image)).join('')
+const gallery = document.querySelector('.gallery')
+
+gallery.insertAdjacentHTML('afterbegin', galleryCardTemplate);
+
+
+//      Option 2 (видаляя існуючі елементи)
+
+// gallery.innerHTML = galleryCardTemplate;
+
+
+//      Option 3
+
 // const greateGalleryCard = image => {
 //   const galleryItemEl = document.createElement('li');
 //   const galleryImgEl = document.createElement('img')
  
-//   galleryImgEl.url = image.url;
+//   galleryImgEl.src = image.url;
 //   galleryImgEl.alt = image.alt;
 
 //   galleryItemEl.append(galleryImgEl)
@@ -41,10 +59,5 @@ const images = [
 // const gallery = document.querySelector('.gallery');
 // gallery.append(...galleryCardArr)
 
+      
 
-const greateGalleryCard = image => {
-  return ` <li><img url = '${image.url}' alt = '${image.alt}'></li>`
-}
-const galleryCardTemplate = images.map(image => greateGalleryCard(image)).join('')
-const gallery = document.querySelector('.gallery')
-gallery.innerHTML = galleryCardTemplate;
